@@ -13,18 +13,19 @@
     tools:context="com.android.popup.MainActivity"
     tools:showIn="@layout/activity_main">
 
-    <TextView
-        android:id="@+id/popup"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="100dp"
-        android:text="popup" />
 
     <TextView
         android:id="@+id/second"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:layout_below="@id/popup"
-        android:text="second" />
+        android:layout_marginTop="100dp"
+        android:text="PopupWindow" />
+
+    <TextView
+        android:id="@+id/popup"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/second"
+        android:layout_marginTop="20dp"
+        android:text="ListPopupWindow" />
 </RelativeLayout>
