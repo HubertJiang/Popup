@@ -10,16 +10,16 @@ import android.widget.BaseAdapter;
  * Created by jiangkuiyuan on 2017/1/11.
  */
 
-public class PopupAdapter extends BaseAdapter {
+public class PopupWindowAdapter extends BaseAdapter {
     private Context context;
 
-    public PopupAdapter(Context context) {
+    public PopupWindowAdapter(Context context) {
         this.context = context;
     }
 
     @Override
     public int getCount() {
-        return 10;
+        return 1;
     }
 
     @Override

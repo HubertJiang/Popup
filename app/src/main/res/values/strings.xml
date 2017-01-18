@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">Popup</string>
     <string name="title_activity_main">MainActivity</string>
+    <string name="loan_day_format">周期&lt;font color=#333333>&lt;big>%1$d&lt;/big>&lt;/font>&lt;font color=#333333>%%&lt;/font></string>
 </resources>
