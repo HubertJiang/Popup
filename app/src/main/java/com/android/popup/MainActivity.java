@@ -35,16 +35,16 @@ public class MainActivity extends AppCompatActivity {
 
         final PopupWindow popupWindow = new PopupWindow(ViewGroup.LayoutParams.MATCH_PARENT,
                 ViewGroup.LayoutParams.WRAP_CONTENT);
-        popupWindow.setContentView(LayoutInflater.from(this).inflate(R.layout.item_popup, null));
+        popupWindow.setContentView(LayoutInflater.from(this).inflate(R.layout.popup_window, null));
         popupWindow.setBackgroundDrawable(
                 new ColorDrawable(ContextCompat.getColor(this, R.color.half)));//需要设置，不设置可能会造成返回键不起作用
 //        popupWindow.setBackgroundDrawable(ContextCompat.getDrawable(this,R.mipmap.ic_launcher));
-        popupWindow.setFocusable(false);//物理键是否响应，为true时，点返回键popupwindow消失，为false时，点返回键activity消失。
-        popupWindow.setOutsideTouchable(true);//点击popupwindow外面消失
+        popupWindow.setFocusable(false);//物理键是否响应，为true时，点返回键popupWindow消失，为false时，点返回键activity消失。
+        popupWindow.setOutsideTouchable(true);//点击popupWindow外面消失
         findViewById(R.id.second).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (android.os.Build.VERSION.SDK_INT == 24) {//在android 7.0中,当popupwindow的高度过大时，
+                if (android.os.Build.VERSION.SDK_INT == 24) {//在android 7.0中,当popupWindow的高度过大时，
                     // 调用showAsDropDown方法popupWindow可能会出现在view的上方或占满全屏，这是android 7.0的bug，用这种方式可以正常显示，
                     // 7.1已经修复这个bug
                     int[] a = new int[2];
@@ -60,12 +60,13 @@ public class MainActivity extends AppCompatActivity {
 
 
         final ListPopupWindow listPopupWindow = new ListPopupWindow(this);
-        listPopupWindow.setWidth(ViewGroup.LayoutParams.MATCH_PARENT);
+        listPopupWindow.setWidth(getResources().getDisplayMetrics().widthPixels);
         listPopupWindow.setHeight(ViewGroup.LayoutParams.MATCH_PARENT);
         listPopupWindow.setBackgroundDrawable(new ColorDrawable(ContextCompat.getColor(this, R.color.half)));
         listPopupWindow.setAdapter(new PopupWindowAdapter(this));
         listPopupWindow.setAnchorView(findViewById(R.id.popup));
         listPopupWindow.setModal(true);
+//        listPopupWindow.setWidth(10000);
         findViewById(R.id.popup).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
