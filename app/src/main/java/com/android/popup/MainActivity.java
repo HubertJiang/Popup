@@ -66,6 +66,8 @@ public class MainActivity extends AppCompatActivity {
         listPopupWindow.setAdapter(new PopupWindowAdapter(this));
         listPopupWindow.setAnchorView(findViewById(R.id.popup));
         listPopupWindow.setModal(true);
+        listPopupWindow.setHorizontalOffset(100);//垂直间距
+        listPopupWindow.setVerticalOffset(100);//水平间距
         findViewById(R.id.popup).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
