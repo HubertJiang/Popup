@@ -39,10 +39,11 @@ public class MainActivity extends AppCompatActivity {
                 ViewGroup.LayoutParams.WRAP_CONTENT);
         popupWindow.setContentView(LayoutInflater.from(this).inflate(R.layout.popup_window, null));
         popupWindow.setBackgroundDrawable(
-                new ColorDrawable(ContextCompat.getColor(this, R.color.half)));//需要设置，不设置可能会造成返回键不起作用
-//        popupWindow.setBackgroundDrawable(ContextCompat.getDrawable(this,R.mipmap.ic_launcher));
+                new ColorDrawable(ContextCompat.getColor(this, R.color.half)));//设置背景色，需要设置，不设置可能会造成返回键不起作用
+//        popupWindow.setBackgroundDrawable(ContextCompat.getDrawable(this,R.mipmap.ic_launcher));//设置背景图
         popupWindow.setFocusable(false);//物理键是否响应，为true时，点返回键popupWindow消失，为false时，点返回键activity消失。
         popupWindow.setOutsideTouchable(true);//点击popupWindow外面消失
+        popupWindow.setAnimationStyle(R.style.PopupWindow);//设置动画效果
         findViewById(R.id.second).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -56,20 +57,19 @@ public class MainActivity extends AppCompatActivity {
                     popupWindow.showAsDropDown(v);
                 }
 
-
             }
         });
 
 
         final ListPopupWindow listPopupWindow = new ListPopupWindow(this);
-//        listPopupWindow.setWidth(getResources().getDisplayMetrics().widthPixels);//设置宽度
-//        listPopupWindow.setHeight(ListPopupWindow.MATCH_PARENT);//设置高度
+        listPopupWindow.setWidth(getResources().getDisplayMetrics().widthPixels);//设置宽度
+        listPopupWindow.setHeight(ListPopupWindow.MATCH_PARENT);//设置高度
         listPopupWindow.setBackgroundDrawable(new ColorDrawable(ContextCompat.getColor(this, R.color.half)));//设置背景色
         listPopupWindow.setAdapter(new PopupWindowAdapter(this));
         listPopupWindow.setAnchorView(findViewById(R.id.popup));
         listPopupWindow.setModal(false);//设置为true响应物理键
-//        listPopupWindow.setHorizontalOffset(100);//垂直间距
-//        listPopupWindow.setVerticalOffset(100);//水平间距
+        listPopupWindow.setHorizontalOffset(100);//垂直间距
+        listPopupWindow.setVerticalOffset(100);//水平间距
         findViewById(R.id.popup).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {//同样android 7.0有显示问题，通过重置高度可以解决。
@@ -82,7 +82,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        listPopupWindow.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        listPopupWindow.setOnItemClickListener(new AdapterView.OnItemClickListener() {//item 点击事件
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 listPopupWindow.dismiss();
